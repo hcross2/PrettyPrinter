@@ -1,4 +1,5 @@
-// Scanner -- The lexical analyzer for the Scheme printer and interpreter
+//Hunter Crossett and Emmitt Bush 
+//4101 CSC LSU
 
 using System;
 using System.IO;
