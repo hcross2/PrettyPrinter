@@ -1,6 +1,7 @@
 //Hunter Crossett and Emmitt Bush 
 //4101 CSC LSU
 
+//Very Java-ish
 using System;
 using System.IO;
 using Tokens;
@@ -18,17 +19,15 @@ namespace Parse
         public Scanner(TextReader i) { In = i; }
   
         // TODO: Add any other methods you need
+        //What will we need? - Hunter
 
         public Token getNextToken()
         {
-            int ch;
+            int ch; //current character we are working on
 
             try
             {
-                // It would be more efficient if we'd maintain our own
-                // input buffer and read characters out of that
-                // buffer, but reading individual characters from the
-                // input stream is easier.
+                //Read in character. May fail, hense try
                 ch = In.Read();
    
                 // TODO: skip white space and comments
@@ -69,11 +68,18 @@ namespace Parse
                     }
                 }
 
-                // String constants
-                else if (ch == '"')
+                // I believe this is finished - Hunter 2015-9-22
+                else if (ch == '"') //" 
                 {
+                    int x = BUFFINDEX; //0 difference because null strings can exist
+                    while (ch!='"') //while ch is not the closing " get length of string
+                    {
+                        ch = In.Read(); //should be have any error cases?
+                        BUFFINDEX++;
+                    }
                     // TODO: scan a string into the buffer variable buf
-                    return new StringToken(new String(buf, 0, 0));
+                    return new StringToken(new String(buf, x, BUFFINDEX));
+                    //return new StringToken(new String(buf, 0, 0)); //I don't think this should be 0,0
                 }
 
     
@@ -118,4 +124,3 @@ namespace Parse
     }
 
 }
-
