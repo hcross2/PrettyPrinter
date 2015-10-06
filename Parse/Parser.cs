@@ -68,7 +68,7 @@ namespace Parse
             else if(t.getType == TokenType.QUOTE)
                 return new Cons(new Ident("quote"), new Cons(parseExp(), null));
             else if(t.getType == TokenType.STRING)
-                return new StrLit(t.getName());
+                return new StrLit(t.getStringVal());
             return null;
                 
             
