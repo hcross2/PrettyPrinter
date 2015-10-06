@@ -75,7 +75,9 @@ namespace Parse
             
         }
   
-  // rest -> )
+  //TODO @Hunter 2015-10-6
+  
+  // rest -> ) 
   //       | exp R
   // R   --> rest (for a look ahead to make sure exp.exp is only called)
   //       | .exp)
