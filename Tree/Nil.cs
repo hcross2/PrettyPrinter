@@ -10,11 +10,11 @@ namespace Tree
   
         public override void print(int n)
         {
-            print(n, false);
+            print(n, false); //what?
         }
 
         public override void print(int n, bool p) {
-	    // There got to be a more efficient way to print n spaces.
+	    // There's got to be a more efficient way to print n spaces.
 	    for (int i = 0; i < n; i++)
                 Console.Write(" ");
 
