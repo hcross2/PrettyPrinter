@@ -75,28 +75,30 @@ namespace Parse
             
         }
   
-  //TODO @Hunter 2015-10-6
-  //branch comment????????
-  //LAST TEST!
-  
-  // rest -> ) 
+  // rest -> ) DONE
   //       | exp R
   // R   --> rest (for a look ahead to make sure exp.exp is only called)
   //       | .exp)
         protected Node parseRest()
         {
             token t = Scanner.getNextToken();
-            if(t == null)
+            if(t == null) //check if null
+            {
+                Console.WriteLine("Parse error: End of file in list");
                 return null;
-            else if(t.getType == TokenType.RPAREN)
+            }
+            else if(t.getType == TokenType.RPAREN) // check if )
                 return new Nil();
             else if(t.getType == TokenType.DOT)
-                // NEED TO PRINT OUT 'NEED TO HAVE AT LEAST ONE EXPRESSION BEFORE ANY DOT"
-                return null;
+            {
+                Console.WriteLine("Parse Error: Expression required before any '.'");
+                return null; //this should throw an error, right? or do we need to change it
+            }
             else
-                
+            { //I think we need to look ahead, but how do we return the current?
+                return parseExp();
+            }
             // TODO: write code for parsing a rest
-            return null;
         }
 
         // TODO: Add any additional methods you might need.
