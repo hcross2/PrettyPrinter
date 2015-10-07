@@ -70,6 +70,9 @@ namespace Parse
                 return new Cons(new Ident("quote"), new Cons(parseExp(), null));
             else if(t.getType == TokenType.STRING)
                 return new StrLit(t.getStringVal());
+            else if(t.getType == TokenType.RPAREN || t.getType == DOT)
+                Console.write("Error, can't have right parenthesis");
+            
             return null;
                 
             
@@ -94,7 +97,6 @@ namespace Parse
                 // NEED TO PRINT OUT 'NEED TO HAVE AT LEAST ONE EXPRESSION BEFORE ANY DOT"
                 return null;
             else
-                
             // TODO: write code for parsing a rest
             return null;
         }
