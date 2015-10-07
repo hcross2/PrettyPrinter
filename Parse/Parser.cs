@@ -1,6 +1,5 @@
 // Hunter Crossett and Emmitt Bush CSC 4101
 // Parser -- the parser for the Scheme printer and interpreter
-// TEST2!!!!!
 // Defines
 //
 //   class Parser;
@@ -71,10 +70,10 @@ namespace Parse
             else if(t.getType == TokenType.STRING)
                 return new StrLit(t.getStringVal());
             return null;
-                
+                //INCLUDE RPAREN AND DOT ERRORS
             
         }
-  
+  // null DONE
   // rest -> ) DONE
   //       | exp R
   // R   --> rest (for a look ahead to make sure exp.exp is only called)
@@ -82,26 +81,24 @@ namespace Parse
         protected Node parseRest()
         {
             token t = Scanner.getNextToken();
-            if(t == null) //check if null
+            if(t == null) //check if rest is null
             {
-                Console.WriteLine("Parse error: End of file in list");
+                Console.WriteLine("Parse error: End of file in list -- parseRest"); //throw specific error
                 return null;
             }
-            else if(t.getType == TokenType.RPAREN) // check if )
+            else if(t.getType == TokenType.RPAREN) // check if ) (end of list)
                 return new Nil();
             else if(t.getType == TokenType.DOT)
             {
-                Console.WriteLine("Parse Error: Expression required before any '.'");
+                Console.WriteLine("Parse Error: Expression required before any '.' -- parseRest");
                 return null; //this should throw an error, right? or do we need to change it
             }
             else
-            { //I think we need to look ahead, but how do we return the current?
+            { //Need to write lookahead and whatnot
                 return parseExp();
             }
             // TODO: write code for parsing a rest
         }
-
         // TODO: Add any additional methods you might need.
     }
 }
-
