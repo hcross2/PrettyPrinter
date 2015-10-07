@@ -48,7 +48,6 @@ namespace Parse
   
         public Node parseExp()
         {
-            // TODO: write code for parsing an exp
                 return parseExp(Scanner.getNextToken());   
         }
         private Node parseExp(Token t)
@@ -70,15 +69,22 @@ namespace Parse
                 return new Cons(new Ident("quote"), new Cons(parseExp(), null));
             else if(t.getType == TokenType.STRING)
                 return new StrLit(t.getStringVal());
+            else if(t.getType == TokenType.RPAREN || t.getType == TokenType.DOT)
+                Console.write("Error, can't have right parenthesis or dot");
+            else
+                Console.write("Failed to recognize token");
             return null;
                 
             
         }
   
   //TODO @Hunter 2015-10-6
+<<<<<<< HEAD
   //branch comment????????
   //LAST TEST!
   //TSET BRANCH FSDFA fdsf
+=======
+>>>>>>> master
   
   // rest -> ) 
   //       | exp R
@@ -88,16 +94,16 @@ namespace Parse
         {
             token t = Scanner.getNextToken();
             if(t == null)
+                Console.write("End of input");
                 return null;
             else if(t.getType == TokenType.RPAREN)
                 return new Nil();
             else if(t.getType == TokenType.DOT)
-                // NEED TO PRINT OUT 'NEED TO HAVE AT LEAST ONE EXPRESSION BEFORE ANY DOT"
-                return null;
+                Console.write("Need to have at least one expression before the dot");
             else
-                
-            // TODO: write code for parsing a rest
-            return null;
+                Node a = parseExp();
+                Node d = parseRest();
+                return new Cons(a,d);
         }
 
         // TODO: Add any additional methods you might need........
