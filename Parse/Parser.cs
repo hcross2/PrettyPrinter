@@ -1,6 +1,5 @@
 // Hunter Crossett and Emmitt Bush CSC 4101
 // Parser -- the parser for the Scheme printer and interpreter
-// TEST2!!!!!
 // Defines
 //
 //   class Parser;
@@ -74,34 +73,38 @@ namespace Parse
                 Console.write("Error, can't have right parenthesis");
             
             return null;
-                
+                //INCLUDE RPAREN AND DOT ERRORS
             
         }
-  
-  //TODO @Hunter 2015-10-6
-  //branch comment????????
-  //LAST TEST!
-  
-  // rest -> ) 
+  // null DONE
+  // rest -> ) DONE
   //       | exp R
   // R   --> rest (for a look ahead to make sure exp.exp is only called)
   //       | .exp)
         protected Node parseRest()
         {
             token t = Scanner.getNextToken();
-            if(t == null)
+            if(t == null) //check if rest is null
+            {
+                Console.WriteLine("Parse error: End of file in list -- parseRest"); //throw specific error
                 return null;
-            else if(t.getType == TokenType.RPAREN)
+            }
+            else if(t.getType == TokenType.RPAREN) // check if ) (end of list)
                 return new Nil();
             else if(t.getType == TokenType.DOT)
-                // NEED TO PRINT OUT 'NEED TO HAVE AT LEAST ONE EXPRESSION BEFORE ANY DOT"
-                return null;
+            {
+                Console.WriteLine("Parse Error: Expression required before any '.' -- parseRest");
+                return null; //this should throw an error, right? or do we need to change it
+            }
             else
+<<<<<<< HEAD
+=======
+            { //Need to write lookahead and whatnot
+                return parseExp();
+            }
+>>>>>>> Hunter'sBranch
             // TODO: write code for parsing a rest
-            return null;
         }
-
-        // TODO: Add any additional methods you might need.
+        // TODO: Add any additional methods you might need. i
     }
 }
-
