@@ -138,6 +138,12 @@ namespace Parse
             // TODO: write code for parsing a rest
             return null;
         }
+        //this needed?
+        protected Node parseRest(Token t)
+        {
+            
+            
+        }
         //protected Node parseR()
         //{
         //   token tt = s.peek();
