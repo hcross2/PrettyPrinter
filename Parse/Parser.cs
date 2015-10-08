@@ -40,39 +40,53 @@ using Tree;
 
 namespace Parse
 {
-    public class Parser {
-	
+    public class Parser 
+    {
         private Scanner scanner;
-
         public Parser(Scanner s) { scanner = s; }
-  
         public Node parseExp()
         {
-            // TODO: write code for parsing an exp
-                return parseExp(Scanner.getNextToken());   
+            return parseExp(Scanner.getNextToken());   
         }
         private Node parseExp(Token t)
         {
             token t = Scanner.getNextToken();
             if(t == null)
+            {
                 return null;
+            }
             else if(t.getType == TokenType.LPAREN)
+            {
                 return parseRest();
+            }
             else if(t.getType == TokenType.TRUE)
+            {
                 return new BoolLit(true);
+            }
             else if(t.getType == TokenType.FALSE)
+            {
                 return new BoolLit(false);
+            }
             else if(t.getType == TokenType.INT)
+            {
                 return new IntLit(t.getIntVal());
+            }
             else if(t.getType == TokenType.IDENT)
+            {
                 return new Ident(t.getName());
+            }
             else if(t.getType == TokenType.QUOTE)
+            {
                 return new Cons(new Ident("quote"), new Cons(parseExp(), null));
+            }
             else if(t.getType == TokenType.STRING)
+            {
                 return new StrLit(t.getStringVal());
-            return null;
-                
-            
+            }
+            else
+            {
+                return null;
+            }
         }
   
   //TODO @Hunter 2015-10-6
@@ -87,9 +101,13 @@ namespace Parse
         {
             token t = Scanner.getNextToken();
             if(t == null)
+            {
                 return null;
+            }
             else if(t.getType == TokenType.RPAREN)
+            {
                 return new Nil();
+            }
             else if(t.getType == TokenType.DOT)
                 // NEED TO PRINT OUT 'NEED TO HAVE AT LEAST ONE EXPRESSION BEFORE ANY DOT"
                 return null;
