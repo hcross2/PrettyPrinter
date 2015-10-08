@@ -120,11 +120,11 @@ namespace Parse
                 parseExp();
                 if(t.getType == TokenType.DOT)
                 {
-                    parseExp();
+                    return new Cons(parseExp(), parseRest());
                 }
                 else
                 {
-                    parseRest();
+                    return new Cons(parseExp(), parseExp());
                 }
                 
                 
