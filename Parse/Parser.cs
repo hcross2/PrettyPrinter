@@ -43,7 +43,10 @@ namespace Parse
     public class Parser 
     {
         private Scanner scanner;
-        public Parser(Scanner s) { scanner = s; }
+        public Parser(Scanner s) 
+        {
+            scanner = s; 
+        }
         public Node parseExp()
         {
             return parseExp(Scanner.getNextToken());   
@@ -83,16 +86,17 @@ namespace Parse
             {
                 return new StrLit(t.getStringVal());
             }
+            else if(t.getType == TokenType.RPAREN || t.getType == TokenType.DOT)
+            {
+                Console.write("Can't have right parenthesis or dot");
+            }
             else
             {
-                return null;
+                Console.write("Failed to parse");
             }
+            return null;
         }
-  
-  //TODO @Hunter 2015-10-6
-  //branch comment????????
-  //LAST TEST!
-  
+ 
   // rest -> ) 
   //       | exp R
   // R   --> rest (for a look ahead to make sure exp.exp is only called)
@@ -109,12 +113,26 @@ namespace Parse
                 return new Nil();
             }
             else if(t.getType == TokenType.DOT)
-                // NEED TO PRINT OUT 'NEED TO HAVE AT LEAST ONE EXPRESSION BEFORE ANY DOT"
-                return null;
+            {
+                Console.write("Need to have at least one expression before a dot");
+            }
             else
+            {
+                Node A = parseExp(t);
+                Node D = parseR();
+                return new Cons(A,D);
+            }
                 
             // TODO: write code for parsing a rest
             return null;
+        }
+        protected Node parseR()
+        {
+            token tt = s.peek();
+            if(tt.getType == TokenType.DOT)
+            {
+                
+            }
         }
 
         // TODO: Add any additional methods you might need.
