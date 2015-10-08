@@ -107,14 +107,14 @@ namespace Parse
             {
                 return null;
             }
-            else if(t.getType == TokenType.RPAREN)
-            {
-                return new Nil();
-            }
             else if(t.getType == TokenType.DOT)
             {
                 Console.write("Need to have at least one expression before a dot");
             }
+            else if(t.getType == TokenType.RPAREN)
+            {
+                return new Nil();
+            } 
             else
             {
                 parseExp();
