@@ -111,7 +111,8 @@ namespace Parse
         }
         //this needed?
         protected Node parseRest(Token t)
-        {
+        {   
+            Node a;
             if(t == null)
             {
                 return null;
@@ -126,14 +127,15 @@ namespace Parse
             } 
             else
             {
-                parseExp(t);
+                a = parseExp(t); 
+                t = scanner.getNextToken(); //we are good until here. Start adding a node and shit
                 if(t.getType == TokenType.DOT)
                 {
-                    return new Cons(parseExp(), parseRest());
+                    return new Cons(a, parseRest());
                 }
                 else
                 {
-                    return new Cons(parseExp(), parseExp());
+                    return new Cons(a, parseExp());
                 }
         //Node A = parseExp(t);
         //Node D = parseR();
