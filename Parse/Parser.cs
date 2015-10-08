@@ -103,6 +103,15 @@ namespace Parse
         protected Node parseRest()
         {
             token t = Scanner.getNextToken();
+            return parseRest(t);
+        }
+                
+            // TODO: write code for parsing a rest
+            return null;
+        }
+        //this needed?
+        protected Node parseRest(Token t)
+        {
             if(t == null)
             {
                 return null;
@@ -117,7 +126,7 @@ namespace Parse
             } 
             else
             {
-                parseExp();
+                parseExp(t);
                 if(t.getType == TokenType.DOT)
                 {
                     return new Cons(parseExp(), parseRest());
@@ -126,23 +135,9 @@ namespace Parse
                 {
                     return new Cons(parseExp(), parseExp());
                 }
-                
-                
-                
-                
-                //Node A = parseExp(t);
-                //Node D = parseR();
-                //return new Cons(A,D);
-            }
-                
-            // TODO: write code for parsing a rest
-            return null;
-        }
-        //this needed?
-        protected Node parseRest(Token t)
-        {
-            
-            
+        //Node A = parseExp(t);
+        //Node D = parseR();
+        //return new Cons(A,D);
         }
         //protected Node parseR()
         //{
