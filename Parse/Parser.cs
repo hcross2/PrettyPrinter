@@ -118,22 +118,35 @@ namespace Parse
             }
             else
             {
-                Node A = parseExp(t);
-                Node D = parseR();
-                return new Cons(A,D);
+                parseExp();
+                if(t.getType == TokenType.DOT)
+                {
+                    parseExp();
+                }
+                else
+                {
+                    parseRest();
+                }
+                
+                
+                
+                
+                //Node A = parseExp(t);
+                //Node D = parseR();
+                //return new Cons(A,D);
             }
                 
             // TODO: write code for parsing a rest
             return null;
         }
-        protected Node parseR()
-        {
-            token tt = s.peek();
-            if(tt.getType == TokenType.DOT)
-            {
-                
-            }
-        }
+        //protected Node parseR()
+        //{
+        //   token tt = s.peek();
+        //    if(tt.getType == TokenType.DOT)
+        //   {
+        //        return new Cons(new Ident("quote"), new Cons(parseExp(), null));
+        //    }
+        //}
 
         // TODO: Add any additional methods you might need.
     }
