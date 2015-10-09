@@ -48,11 +48,11 @@ namespace Parse
         }
         public Node parseExp()
         {
-            return parseExp(Scanner.getNextToken());   
+            token t = Scanner.getNextToken();
+            return parseExp(t);  
         }
         private Node parseExp(Token t)
         {
-            token t = Scanner.getNextToken();
             if(t == null)
             {
                 return null;
@@ -98,49 +98,77 @@ namespace Parse
  
   // rest -> ) 
   //       | exp R
-  // R   --> rest (for a look ahead to make sure exp.exp is only called)
-  //       | .exp)
+  // R   --> .exp) 
+  //       | rest (for a look ahead to make sure exp.exp is only called)
         protected Node parseRest()
         {
             token t = Scanner.getNextToken();
-            return parseRest(t);
-        }
-                
-            // TODO: write code for parsing a rest
-            return null;
-        }
-        //this needed?
-        protected Node parseRest(Token t)
-        {   
-            Node a;
             if(t == null)
             {
                 return null;
-            }
-            else if(t.getType == TokenType.DOT)
-            {
-                Console.write("Need to have at least one expression before a dot");
             }
             else if(t.getType == TokenType.RPAREN)
             {
                 return new Nil();
             } 
+            else if(t.getType == TokenType.DOT)
+            {
+                Console.write("Need to have at least one expression before a dot");
+            }
+            else 
+            {
+                Node a=parseExp(t);
+                Node d=parseR();
+                return new Cons(a,d);
+            }
+        }
+        protected Node parseR()
+        {
+            token t = Scanner.getNextToken();
+            if(t.getType == TokenType.DOT)
+            {
+                Node new = parseExp();
+            }
             else
             {
-                a = parseExp(t); 
-                t = scanner.getNextToken(); //we are good until here. Start adding a node and shit
-                if(t.getType == TokenType.DOT)
-                {
-                    return new Cons(a, parseRest());
-                }
-                else
-                {
-                    return new Cons(a, parseExp());
-                }
+                parseRest();
+            }
+        }
+
+
+
+
+
+
+           // Node a;
+            //if(t == null)
+            //{
+             //   return null;
+           // }
+            //else if(t.getType == TokenType.DOT)
+            //{
+            //    Console.write("Need to have at least one expression before a dot");
+            //}
+            //else if(t.getType == TokenType.RPAREN)
+            //{
+             //   return new Nil();
+            //} 
+            //else
+            //{
+             //   a = parseExp(t); 
+              //  t = scanner.getNextToken(); //we are good until here. Start adding a node and shit
+               // if(t.getType == TokenType.DOT)
+                //{
+                 //   return new Cons(a, parseRest());
+               // }
+                //else
+                //{
+                 //   return new Cons(a, parseExp());
+                //}
         //Node A = parseExp(t);
         //Node D = parseR();
         //return new Cons(A,D);
-        }
+        
         //protected Node parseR()
         //{
         //   token tt = s.peek();
