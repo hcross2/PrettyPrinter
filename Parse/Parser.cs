@@ -48,7 +48,7 @@ namespace Parse
         }
         public Node parseExp()
         {
-            token t = Scanner.getNextToken();
+            token t = Scanner.getNextToken(); //if null parseExp takes care of it.
             return parseExp(t);  
         }
         private Node parseExp(Token t)
@@ -102,9 +102,10 @@ namespace Parse
   //       | rest (for a look ahead to make sure exp.exp is only called)
         protected Node parseRest()
         {
-            token t = Scanner.getNextToken();
+            token t = Scanner.getNextToken(); //error thrown correctly with null token
             if(t == null)
             {
+                Console.write("ParseRest errror: EOF in List ");
                 return null;
             }
             else if(t.getType == TokenType.RPAREN)
@@ -125,60 +126,25 @@ namespace Parse
         protected Node parseR()
         {
             token t = Scanner.getNextToken();
-            if(t.getType == TokenType.DOT)
+            if (t == null)
+            {
+                Console.write("ParseR errror: EOF in List ");
+                return null;                       
+            }
+            else if(t.getType == TokenType.DOT)
             {
                 Node new = parseExp();
+                t = Scanner.getNextToken();
+                if (t.getType != TokenType.RPAREN)
+                {
+                    Console.write("PraseR error: Missing RPAREN for (x . y 1 3 ....)");
+                }
             }
             else
             {
                 parseRest();
             }
         }
-
-
-
-
-
-
-           // Node a;
-            //if(t == null)
-            //{
-             //   return null;
-           // }
-            //else if(t.getType == TokenType.DOT)
-            //{
-            //    Console.write("Need to have at least one expression before a dot");
-            //}
-            //else if(t.getType == TokenType.RPAREN)
-            //{
-             //   return new Nil();
-            //} 
-            //else
-            //{
-             //   a = parseExp(t); 
-              //  t = scanner.getNextToken(); //we are good until here. Start adding a node and shit
-               // if(t.getType == TokenType.DOT)
-                //{
-                 //   return new Cons(a, parseRest());
-               // }
-                //else
-                //{
-                 //   return new Cons(a, parseExp());
-                //}
-        //Node A = parseExp(t);
-        //Node D = parseR();
-        //return new Cons(A,D);
-        
-        //protected Node parseR()
-        //{
-        //   token tt = s.peek();
-        //    if(tt.getType == TokenType.DOT)
-        //   {
-        //        return new Cons(new Ident("quote"), new Cons(parseExp(), null));
-        //    }
-        //}
-
-        // TODO: Add any additional methods you might need.
     }
 }
 
