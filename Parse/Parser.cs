@@ -1,37 +1,4 @@
 // Hunter Crossett and Emmitt Bush CSC 4101
-// Parser -- the parser for the Scheme printer and interpreter
-// Defines
-//
-//   class Parser;
-//
-// Parses the language
-//
-//   exp  ->  ( rest
-//         |  #f
-//         |  #t
-//         |  ' exp
-//         |  integer_constant
-//         |  string_constant
-//         |  identifier
-//    rest -> )
-//         |  exp+ [. exp] )
-//
-// and builds a parse tree.  Lists of the form (rest) are further
-// `parsed' into regular lists and special forms in the constructor
-// for the parse tree node class Cons.  See Cons.parseList() for
-// more information.
-//
-// The parser is implemented as an LL(0) recursive descent parser.
-// I.e., parseExp() expects that the first token of an exp has not
-// been read yet.  If parseRest() reads the first token of an exp
-// before calling parseExp(), that token must be put back so that
-// it can be reread by parseExp() or an alternative version of
-// parseExp() must be called.
-//
-// If EOF is reached (i.e., if the scanner returns a NULL) token,
-// the parser returns a NULL tree.  In case of a parse error, the
-// parser discards the offending token (which probably was a DOT
-// or an RPAREN) and attempts to continue parsing with the next token.
 
 using System;
 using Tokens;
@@ -79,7 +46,7 @@ namespace Parse
             }
             else if(t.getType == TokenType.QUOTE)
             {
-                return new Cons(new Ident("quote"), new Cons(parseExp(), null));
+                return new Cons(new Ident("quote"), new Cons(parseExp(), Nil()));
             }
             else if(t.getType == TokenType.STRING)
             {
@@ -87,11 +54,11 @@ namespace Parse
             }
             else if(t.getType == TokenType.RPAREN || t.getType == TokenType.DOT)
             {
-                Console.write("Can't have right parenthesis or dot");
+                Console.write("parseExp error: Can't have right parenthesis or dot");
             }
             else
             {
-                Console.write("Failed to parse");
+                Console.write("PraseExp error: Failed to parse");
             }
             return null;
         }
@@ -114,7 +81,7 @@ namespace Parse
             } 
             else if(t.getType == TokenType.DOT)
             {
-                Console.write("Need to have at least one expression before a dot");
+                Console.write("ParseRest error: Need to have at least one expression before a dot");
             }
             else 
             {
@@ -147,4 +114,3 @@ namespace Parse
         }
     }
 }
-
