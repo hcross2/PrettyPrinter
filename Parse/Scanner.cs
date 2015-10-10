@@ -56,7 +56,7 @@ namespace Parse
                 ch = In.Read();
                 if(ch==' ')
                     return getNextToken();
-                if(ch =='\'')
+                if(ch =='\'') //WHAT?!
                 {
                         ch = In.Read();
                         if (ch == -1)
@@ -88,7 +88,7 @@ namespace Parse
                 if (ch == -1)
                     return null;
         
-                else if (ch == '\'') 
+                else if (ch == 39) 
                     return new Token(TokenType.QUOTE);
                 else if (ch == '(')
                     return new Token(TokenType.LPAREN);
