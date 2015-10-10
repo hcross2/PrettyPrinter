@@ -89,6 +89,7 @@ namespace Parse
                 Node d=parseR();
                 return new Cons(a,d);
             }
+            return null;
         }
         protected Node parseR()
         {
@@ -110,7 +111,7 @@ namespace Parse
             }
             else
             {
-                parseRest();
+                return parseRest();
             }
         }
     }
