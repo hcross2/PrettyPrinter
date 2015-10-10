@@ -88,7 +88,7 @@ namespace Parse
                 if (ch == -1)
                     return null;
         
-                else if (ch == '\'')
+                else if (ch == ''') //replaced '/'' with '''
                     return new Token(TokenType.QUOTE);
                 else if (ch == '(')
                     return new Token(TokenType.LPAREN);
@@ -118,11 +118,12 @@ namespace Parse
                     }
                 }
 
-                // I believe this is finished - Hunter 2015-9-22
+                //strings
                 else if (ch == '"') //" 
                 {
                     ch = In.Read();
                     int BUFFINDEX = 0;
+                    buf[BUFFINDEX++] = (char)ch;
                     while (ch!='"') //while ch is not the closing " get length of string
                     {
                         ch = In.Read(); //should be have any error cases?
