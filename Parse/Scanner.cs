@@ -57,6 +57,8 @@ namespace Parse
                 if(ch==' ')
                     return getNextToken();
                 char frontbutt = (char) 92;
+                if(ch == 10)
+                    return getNextToken();
                 if(ch == frontbutt) //may be
                 {
                         ch = In.Read();
@@ -87,7 +89,8 @@ namespace Parse
                        getNextToken();
                 }
                 char butt = (char)39 ;
-                if (ch == -1)
+                int EOF = -1;
+                if (ch == EOF)
                     return null;
                 else if (ch == butt) 
                     return new Token(TokenType.QUOTE);
@@ -113,8 +116,8 @@ namespace Parse
                     }
                     else
                     {
-                        Console.Error.WriteLine("Illegal character '" +
-                                                (char)ch + "' following #");
+                        Console.Error.WriteLine("Illegal character " +
+                                                (char)ch + " following #");
                         return getNextToken();
                     }
                 }
