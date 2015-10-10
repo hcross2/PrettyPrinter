@@ -75,10 +75,10 @@ namespace Parse
                     ch=In.Read(); //NEED TO RETURN NULL FOR EOF
                     if (ch == -1) //assumes EOF is -1
                         return null;
-                    char x = null;
+                    int x = 0;
                     while (!(x == '\'' && ch == 'n')) //changed from x!=\ and ch!=n for legibility
                         {                             //probably should have used peek instead
-                            x=ch;
+                            x = ch;
                             ch = In.Read();
                             if (ch == -1) //assumes EOF is -1
                                 return null;
@@ -160,7 +160,7 @@ namespace Parse
                     while(IndentifierCharacter((char)peekch) || peekch >= '0' && peekch <= '9')
                     {
                         ch = In.Read();
-                        buf[a++] = ch;
+                        buf[a++] = (char)ch;
                         peekch = In.Peek();
                     }
                     return new IdentToken(new String(buf, 0, a));
