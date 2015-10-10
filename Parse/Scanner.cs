@@ -54,7 +54,7 @@ namespace Parse
             {
                 //Read in character. May fail, hense try
                 ch = In.Read();
-                if(ch==" ")
+                if(ch==' ')
                     return getNextToken();
                 if(ch =='\'')
                 {
@@ -75,7 +75,7 @@ namespace Parse
                     ch=In.Read(); //NEED TO RETURN NULL FOR EOF
                     if (ch == -1) //assumes EOF is -1
                         return null;
-                    char x;
+                    char x = null;
                     while (!(x == '\'' && ch == 'n')) //changed from x!=\ and ch!=n for legibility
                         {                             //probably should have used peek instead
                             x=ch;
@@ -131,7 +131,7 @@ namespace Parse
                             Console.WriteLine("Scanner Error: EOF in middle of string");
                             return null;
                         }
-                        buf[BUFFINDEX++] = ch;
+                        buf[BUFFINDEX++] = (char)ch;
                     }
                     return new StringToken(new String(buf, 0, BUFFINDEX));
                 }
@@ -140,28 +140,28 @@ namespace Parse
                 else if (ch >= '0' && ch <= '9')
                 {
                     int i = ch - '0';
-                    int peekch = In.peek();
+                    int peekch = In.Peek();
                     while(peekch >= '0' && peekch <= '9')
                     {
                         ch = In.Read();
                         i = 10*i + ch -'0';
-                        peekch = In.peek();
+                        peekch = In.Peek();
                     }
                     return new IntToken(i);
                 }
         
                 // Identifiers
-                else if (IndentifierCharacter(ch))
+                else if (IndentifierCharacter((char)ch))
                 {
                     int a = 0;
-                    int peekch = In.peek();
+                    int peekch = In.Peek();
                     if (peekch == -1) //assumes EOF is -1
                         return null;
-                    while(IndentifierCharacter(peekch) || peekch >= '0' && peekch <= '9')
+                    while(IndentifierCharacter((char)peekch) || peekch >= '0' && peekch <= '9')
                     {
                         ch = In.Read();
                         buf[a++] = ch;
-                        peekch = In.peek();
+                        peekch = In.Peek();
                     }
                     return new IdentToken(new String(buf, 0, a));
                 }
