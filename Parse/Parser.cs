@@ -15,7 +15,7 @@ namespace Parse
         }
         public Node parseExp()
         {
-            token t = Scanner.getNextToken(); //if null parseExp takes care of it.
+            Token t = s.getNextToken(); //if null parseExp takes care of it.
             return parseExp(t);  
         }
         private Node parseExp(Token t)
@@ -54,11 +54,11 @@ namespace Parse
             }
             else if(t.getType == TokenType.RPAREN || t.getType == TokenType.DOT)
             {
-                Console.write("parseExp error: Can't have right parenthesis or dot");
+                Console.WriteLine("parseExp error: Can't have right parenthesis or dot");
             }
             else
             {
-                Console.write("PraseExp error: Failed to parse");
+                Console.WriteLine("PraseExp error: Failed to parse");
             }
             return null;
         }
@@ -69,10 +69,10 @@ namespace Parse
   //       | rest (for a look ahead to make sure exp.exp is only called)
         protected Node parseRest()
         {
-            token t = Scanner.getNextToken(); //error thrown correctly with null token
+            Token t = s.getNextToken(); //error thrown correctly with null token
             if(t == null)
             {
-                Console.write("ParseRest errror: EOF in List ");
+                Console.WriteLine("ParseRest errror: EOF in List ");
                 return null;
             }
             else if(t.getType == TokenType.RPAREN)
@@ -81,7 +81,7 @@ namespace Parse
             } 
             else if(t.getType == TokenType.DOT)
             {
-                Console.write("ParseRest error: Need to have at least one expression before a dot");
+                Console.WriteLine("ParseRest error: Need to have at least one expression before a dot");
             }
             else 
             {
@@ -92,20 +92,21 @@ namespace Parse
         }
         protected Node parseR()
         {
-            token t = Scanner.getNextToken();
+            Token t = s.getNextToken();
             if (t == null)
             {
-                Console.write("ParseR errror: EOF in List ");
+                Console.WriteLine("ParseR errror: EOF in List ");
                 return null;                       
             }
             else if(t.getType == TokenType.DOT)
             {
-                Node new = parseExp();
-                t = Scanner.getNextToken();
+                Node temp = parseExp(); //not perfect
+                t = s.getNextToken();
                 if (t.getType != TokenType.RPAREN)
                 {
-                    Console.write("PraseR error: Missing RPAREN for (x . y 1 3 ....)");
+                    Console.WriteLine("PraseR error: Missing RPAREN for (x . y 1 3 ....)");
                 }
+                return temp;
             }
             else
             {

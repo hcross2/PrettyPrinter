@@ -17,27 +17,27 @@ namespace Parse
         
         private char[] buf = new char[BUFSIZE];
         
-        private boolean IndentifierCharacter(char ch) //we wrote a method to call instead of rewriting this each time
+        private bool IndentifierCharacter(char ch) //we wrote a method to call instead of rewriting this each time
         {
             return( ch >= 'A' && ch <= 'Z' 
-                    || ch == '!' 
-                    || ch == '$' 
-                    || ch == '%' 
-                    || ch == '&' 
-                    || ch == '*' 
-                    || ch == '+' 
-                    || ch == '-' 
-                    || ch == '.' 
-                    || ch == '/' 
-                    || ch == ':' 
-                    || ch == '<' 
-                    || ch == '=' 
-                    || ch == '>' 
-                    || ch == '?' 
-                    || ch == '@' 
-                    || ch == '^' 
-                    || ch == '_' 
-                    || ch == '~')  
+                    | ch == '!' 
+                    | ch == '$' 
+                    | ch == '%' 
+                    | ch == '&' 
+                    | ch == '*' 
+                    | ch == '+' 
+                    | ch == '-' 
+                    | ch == '.' 
+                    | ch == '/' 
+                    | ch == ':' 
+                    | ch == '<' 
+                    | ch == '=' 
+                    | ch == '>' 
+                    | ch == '?' 
+                    | ch == '@' 
+                    | ch == '^' 
+                    | ch == '_' 
+                    | ch == '~') ;
         }
 
         public Scanner(TextReader i) { In = i; }
@@ -46,7 +46,7 @@ namespace Parse
         //What will we need? - Hunter 
         //Nothing! - Emmitt
 
-        public Token getNextToken()
+        public static Token getNextToken() //this was changed **************** added static
         {
             int ch; //current character we are working on
 
@@ -72,14 +72,14 @@ namespace Parse
                 }
                 if(ch ==';')
                 {
-                    ch=InRead(); //NEED TO RETURN NULL FOR EOF
+                    ch=In.Read(); //NEED TO RETURN NULL FOR EOF
                     if (ch == -1) //assumes EOF is -1
                         return null;
                     char x;
                     while (!(x == '\'' && ch == 'n')) //changed from x!=\ and ch!=n for legibility
                         {                             //probably should have used peek instead
                             x=ch;
-                            ch.InRead();
+                            ch = In.Read();
                             if (ch == -1) //assumes EOF is -1
                                 return null;
                         }
@@ -131,7 +131,7 @@ namespace Parse
                             Console.WriteLine("Scanner Error: EOF in middle of string");
                             return null;
                         }
-                        buf[BUFFINDEX++] == ch;
+                        buf[BUFFINDEX++] = ch;
                     }
                     return new StringToken(new String(buf, 0, BUFFINDEX));
                 }
@@ -159,8 +159,8 @@ namespace Parse
                         return null;
                     while(IndentifierCharacter(peekch) || peekch >= '0' && peekch <= '9')
                     {
-                        ch = In.Read()
-                        buf[a++] == ch;
+                        ch = In.Read();
+                        buf[a++] = ch;
                         peekch = In.peek();
                     }
                     return new IdentToken(new String(buf, 0, a));
