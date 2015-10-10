@@ -46,13 +46,13 @@ namespace Parse
             }
             else if(t.getType() == TokenType.QUOTE)
             {
-                return new Cons(new Ident("quote"), new Cons(parseExp(), Nil()));
+                return new Cons(new Ident("quote"), new Cons(parseExp(), new Nil())); //Type node?
             }
             else if(t.getType() == TokenType.STRING)
             {
                 return new StringLit(t.getStringVal());
             }
-            else if(t.getType() == TokenType.RPAREN || t.getType == TokenType.DOT)
+            else if(t.getType() == TokenType.RPAREN || t.getType() == TokenType.DOT)
             {
                 Console.WriteLine("parseExp error: Can't have right parenthesis or dot");
             }
@@ -69,7 +69,7 @@ namespace Parse
   //       | rest (for a look ahead to make sure exp.exp is only called)
         protected Node parseRest()
         {
-            Token t = s.getNextToken(); //error thrown correctly with null token
+            Token t = scanner.getNextToken(); //error thrown correctly with null token
             if(t == null)
             {
                 Console.WriteLine("ParseRest errror: EOF in List ");
@@ -92,7 +92,7 @@ namespace Parse
         }
         protected Node parseR()
         {
-            Token t = s.getNextToken();
+            Token t = scanner.getNextToken();
             if (t == null)
             {
                 Console.WriteLine("ParseR errror: EOF in List ");
@@ -101,7 +101,7 @@ namespace Parse
             else if(t.getType() == TokenType.DOT)
             {
                 Node temp = parseExp(); //not perfect
-                t = s.getNextToken();
+                t = scanner.getNextToken();
                 if (t.getType() != TokenType.RPAREN)
                 {
                     Console.WriteLine("PraseR error: Missing RPAREN for (x . y 1 3 ....)");

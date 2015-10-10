@@ -46,7 +46,7 @@ namespace Parse
         //What will we need? - Hunter 
         //Nothing! - Emmitt
 
-        public static Token getNextToken() //this was changed **************** added static
+        public Token getNextToken() 
         {
             int ch; //current character we are working on
 
