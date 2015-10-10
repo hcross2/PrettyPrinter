@@ -30,24 +30,24 @@ namespace Tree
             if (car.isSymbol()) // is this implemeneted yet?
             {
                 string name = car.getName(); //implement getname
-                if (name == "quote")
-                    return new quote();
+                if (name == "quote" || name == "'")
+                    form = new quote();
                 else if (name == "lamda") //assumes strings can be compared this way
-                    return new lamda();
+                    form = new lamda();
                 else if (name == "if")
-                    return new If();
+                    form = new If();
                 else if (name == "begin")
-                    return new begin();
+                    form = new begin();
                 else if (name == "let")
-                    return new Let();
+                    form = new Let();
                 else if (name == "cond")
-                    return new cond();
+                    form = new cond();
                 else if (name == "define")
-                    return new define();
+                    form = new define();
                 else if (name == "set!")
-                    return new Set();
+                    form = new Set();
                 else    
-                    return new Regular();
+                    form = new Regular();
             }
         }
  
