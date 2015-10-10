@@ -6,7 +6,10 @@ namespace Tree
     {
         // The argument of print(int) is the number of characters to indent.
         // Every subclass of Node must implement print(int).
-        public virtual void print(int n) { }
+        public virtual void print(int n) 
+        { 
+            
+        }
 
         // The first argument of print(int, bool) is the number of characters
         // to indent.  It is interpreted the same as for print(int).
@@ -33,20 +36,55 @@ namespace Tree
         // the type of a node and that extract some information.
 
         // TODO: implement these in the appropriate subclasses to return true.
-        public virtual bool isBool()   { return false; }  // BoolLit
-        public virtual bool isNumber() { return false; }  // IntLit
-        public virtual bool isString() { return false; }  // StringLit
-        public virtual bool isSymbol() { return false; }  // Ident
-        public virtual bool isNull()   { return false; }  // Nil
-        public virtual bool isPair()   { return false; }  // Cons
+        public virtual bool isBool()    // BoolLit
+        { 
+            return false; 
+        }  
+        
+        public virtual bool isNumber()  // IntLit
+        { 
+            return false; 
+        } 
+         
+        public virtual bool isString()  // StringLit
+        { 
+            return false; 
+        }  
+        
+        public virtual bool isSymbol()  // Ident
+        { 
+            return false; 
+        }  
+        
+        public virtual bool isNull()   // Nil
+        { 
+            return false; 
+        }  
+        
+        public virtual bool isPair()   // Cons
+        { 
+            return false; 
+        }  
 
         // TODO: Report an error in these default methods and implement them
         // in class Cons.  After setCar, a Cons cell needs to be `parsed' again
         // using parseList.
-        public virtual Node getCar() { return null; }
-        public virtual Node getCdr() { return null; }
-        public virtual void setCar(Node a) { }
-        public virtual void setCdr(Node d) { }
+        public virtual Node getCar() //need param?
+        { 
+            return null; 
+        }
+        public virtual Node getCdr() //needs param?
+        { 
+            return null; 
+        }
+        public virtual void setCar(Node a) 
+        { 
+            
+        }
+        public virtual void setCdr(Node d) 
+        {
+            
+        }
     }
 }
 

@@ -52,7 +52,7 @@ public class SPP
         root = parser.parseExp();
         while (root != null) 
         {
-            root.print(0);
+            root.print(0); //should we put a new line here?
             root = parser.parseExp();
         }
 
