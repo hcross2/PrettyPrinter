@@ -56,7 +56,7 @@ namespace Parse
                 ch = In.Read();
                 if(ch==' ')
                     return getNextToken();
-                if(ch =='\\')
+                if(ch =='\'')
                 {
                         ch = In.Read();
                         if (ch == -1)
@@ -87,11 +87,9 @@ namespace Parse
                 }
                 if (ch == -1)
                     return null;
-                Console.WriteLine("DEBUG DEBUG DEBUG GOING TO POUND THAT SWEET '     ");
+        
                 else if (ch == '\'') 
-                {   Console.WriteLine("AWWWWWW YEAAHHHH");
                     return new Token(TokenType.QUOTE);
-                }
                 else if (ch == '(')
                     return new Token(TokenType.LPAREN);
                 else if (ch == ')')
