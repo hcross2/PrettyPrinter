@@ -11,7 +11,10 @@ namespace Tree
             for (int i = 0; i < n; i++)
                 Console.Write(' ');
             if (!p)
+            {
                 Console.Write("(");
+                p = true;
+            }
             if (cons.getCar().isCons() | cons.getCar().isNil()) //is isCons ok?
                 cons.getCar().print(n, false);
             else
@@ -20,14 +23,20 @@ namespace Tree
             if (cons.getCdr() != null)
                 Console.Write(" ");
     	
-		
-    	if (cons.getCdr() != null) {
-    		cons.getCdr().print(n, true);
-    	} else {
-			System.out.print(")");		
-		} 
+            if (cons.getCdr() != null)
+                cons.getCdr().print(n, true);
+            else
+                Console.Write(")");		
+                
+            public void printQuote(Node t, int n, bool p)
+            {
+                print(t, n, p);
+            }
+            
+            public Cons isCons()
+            {
+                return cons;
+            }
         }
     }
 }
-
-

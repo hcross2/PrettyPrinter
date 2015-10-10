@@ -1,7 +1,5 @@
-// Cons -- Parse tree node class for representing a Cons node
-
+//Hunter Crossett and Emmitt Bush
 using System;
-
 namespace Tree
 {
     public class Cons : Node
@@ -9,7 +7,6 @@ namespace Tree
         private Node car;
         private Node cdr;
         private Special form;
-    
         public Cons(Node a, Node d)
         {
             car = a;
