@@ -24,35 +24,35 @@ namespace Parse
             {
                 return null;
             }
-            else if(t.getType == TokenType.LPAREN)
+            else if(t.getType() == TokenType.LPAREN)
             {
                 return parseRest();
             }
-            else if(t.getType == TokenType.TRUE)
+            else if(t.getType() == TokenType.TRUE)
             {
                 return new BoolLit(true);
             }
-            else if(t.getType == TokenType.FALSE)
+            else if(t.getType() == TokenType.FALSE)
             {
                 return new BoolLit(false);
             }
-            else if(t.getType == TokenType.INT)
+            else if(t.getType() == TokenType.INT)
             {
                 return new IntLit(t.getIntVal());
             }
-            else if(t.getType == TokenType.IDENT)
+            else if(t.getType() == TokenType.IDENT)
             {
                 return new Ident(t.getName());
             }
-            else if(t.getType == TokenType.QUOTE)
+            else if(t.getType() == TokenType.QUOTE)
             {
                 return new Cons(new Ident("quote"), new Cons(parseExp(), Nil()));
             }
-            else if(t.getType == TokenType.STRING)
+            else if(t.getType() == TokenType.STRING)
             {
                 return new StrLit(t.getStringVal());
             }
-            else if(t.getType == TokenType.RPAREN || t.getType == TokenType.DOT)
+            else if(t.getType() == TokenType.RPAREN || t.getType == TokenType.DOT)
             {
                 Console.WriteLine("parseExp error: Can't have right parenthesis or dot");
             }
@@ -75,11 +75,11 @@ namespace Parse
                 Console.WriteLine("ParseRest errror: EOF in List ");
                 return null;
             }
-            else if(t.getType == TokenType.RPAREN)
+            else if(t.getType() == TokenType.RPAREN)
             {
                 return new Nil();
             } 
-            else if(t.getType == TokenType.DOT)
+            else if(t.getType() == TokenType.DOT)
             {
                 Console.WriteLine("ParseRest error: Need to have at least one expression before a dot");
             }
@@ -98,11 +98,11 @@ namespace Parse
                 Console.WriteLine("ParseR errror: EOF in List ");
                 return null;                       
             }
-            else if(t.getType == TokenType.DOT)
+            else if(t.getType() == TokenType.DOT)
             {
                 Node temp = parseExp(); //not perfect
                 t = s.getNextToken();
-                if (t.getType != TokenType.RPAREN)
+                if (t.getType() != TokenType.RPAREN)
                 {
                     Console.WriteLine("PraseR error: Missing RPAREN for (x . y 1 3 ....)");
                 }
