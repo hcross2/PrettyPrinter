@@ -56,7 +56,7 @@ namespace Parse
                 ch = In.Read();
                 if(ch==' ')
                     return getNextToken();
-                if(ch =='\'')
+                if(ch =='\\')
                 {
                         ch = In.Read();
                         if (ch == -1)
@@ -87,9 +87,11 @@ namespace Parse
                 }
                 if (ch == -1)
                     return null;
-        
-                else if (ch == ''') //replaced '/'' with '''
+                Console.WriteLine("DEBUG DEBUG DEBUG GOING TO POUND THAT SWEET '     ");
+                else if (ch == '\'') 
+                {   Console.WriteLine("AWWWWWW YEAAHHHH");
                     return new Token(TokenType.QUOTE);
+                }
                 else if (ch == '(')
                     return new Token(TokenType.LPAREN);
                 else if (ch == ')')
@@ -134,7 +136,7 @@ namespace Parse
                         }
                         buf[BUFFINDEX++] = (char)ch;
                     }
-                    return new StringToken(new String(buf, 0, BUFFINDEX));
+                    return new StringToken(new String(buf, 0, BUFFINDEX-1));
                 }
 
                 // Integer constants
@@ -164,7 +166,7 @@ namespace Parse
                         buf[a++] = (char)ch;
                         peekch = In.Peek();
                     }
-                    return new IdentToken(new String(buf, 0, a));
+                    return new IdentToken(new String(buf, 0, a-1));
                 }
     
                 // Illegal character
