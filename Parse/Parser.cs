@@ -15,7 +15,7 @@ namespace Parse
         }
         public Node parseExp()
         {
-            Token t = s.getNextToken(); //if null parseExp takes care of it.
+            Token t = scanner.getNextToken(); //if null parseExp takes care of it.
             return parseExp(t);  
         }
         private Node parseExp(Token t)
@@ -50,7 +50,7 @@ namespace Parse
             }
             else if(t.getType() == TokenType.STRING)
             {
-                return new StrLit(t.getStringVal());
+                return new StringLit(t.getStringVal());
             }
             else if(t.getType() == TokenType.RPAREN || t.getType == TokenType.DOT)
             {
