@@ -87,8 +87,8 @@ namespace Parse
                 }
                 if (ch == -1)
                     return null;
-        
-                else if (ch == 39) 
+                char butt = (char)39;
+                else if (ch == butt) 
                     return new Token(TokenType.QUOTE);
                 else if (ch == '(')
                     return new Token(TokenType.LPAREN);
