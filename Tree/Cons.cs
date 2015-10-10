@@ -60,6 +60,24 @@ namespace Tree
         {
             form.print(this, n, p);
         }
+        
+        public override Node getCar()
+        {
+            return this.car;
+        }
+        
+        public override Node getCdr()
+        {
+            return this.cdr;
+        }
+        
+        public boolean isPair();
+        {
+            if (car != null & cdr != null )
+                return true;
+            else    
+                return false;
+        }
     }
 }
 
