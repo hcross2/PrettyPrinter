@@ -16,10 +16,10 @@ namespace Tree
             }
             Console.WriteLine("begin"); //print out keywords
             if (t.getCdr().isPair())            //probably should throw an error if it isnt.
-                t.getCdr().print(n + 2, true); 
-		for (int i = 0; i < n; i++) 
+                t.getCdr().print(n + 4, true); 
+            for (int i = 0; i < n; i++) 
             Console.Write(' ');
-		Console.Write(")");
+            Console.Write(")");
         }
     }
 }
