@@ -27,8 +27,28 @@ namespace Tree
         // parsing up to the interpreter.
         void parseList()
         {
-            // TODO: implement this function and any helper functions
-            // you might need.
+            if (car.isSymbol()) // is this implemeneted yet?
+            {
+                string name = car.getName(); //implement getname
+                if (name == "quote")
+                    return new quote();
+                else if (name == "lamda") //assumes strings can be compared this way
+                    return new lamda();
+                else if (name == "if")
+                    return new If();
+                else if (name == "begin")
+                    return new begin();
+                else if (name == "let")
+                    return new Let();
+                else if (name == "cond")
+                    return new cond();
+                else if (name == "define")
+                    return new define();
+                else if (name == "set!")
+                    return new Set();
+                else    
+                    return new Regular();
+            }
         }
  
         public override void print(int n)
