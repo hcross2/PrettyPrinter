@@ -71,19 +71,19 @@ namespace Tree
         // using parseList.
         public virtual Node getCar() //need param?
         { 
-            return null; 
+            return car; 
         }
         public virtual Node getCdr() //needs param?
         { 
-            return null; 
+            return cdr; 
         }
         public virtual void setCar(Node a) 
         { 
-            
+            a = car;
         }
         public virtual void setCdr(Node d) 
         {
-            
+            d = cdr;
         }
         public string getName()
         {
