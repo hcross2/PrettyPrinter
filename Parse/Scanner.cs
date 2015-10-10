@@ -20,6 +20,7 @@ namespace Parse
         private bool IndentifierCharacter(char ch) //we wrote a method to call instead of rewriting this each time
         {
             return( ch >= 'A' && ch <= 'Z' 
+                    | ch >= 'a' && ch <= 'z''
                     | ch == '!' 
                     | ch == '$' 
                     | ch == '%' 
@@ -57,7 +58,7 @@ namespace Parse
                 if(ch==' ')
                     return getNextToken();
                 char frontbutt = (char) 92;
-                if(ch == 10)
+                if(ch >= 9 && ch <= 13)
                     return getNextToken();
                 if(ch == frontbutt) //may be
                 {
@@ -159,6 +160,7 @@ namespace Parse
                 else if (IndentifierCharacter((char)ch))
                 {
                     int a = 0;
+                    buf[a++] = (char)ch;
                     int peekch = In.Peek();
                     if (peekch == -1) //assumes EOF is -1
                         return null;
@@ -168,7 +170,7 @@ namespace Parse
                         buf[a++] = (char)ch;
                         peekch = In.Peek();
                     }
-                    return new IdentToken(new String(buf, 0, a-1));
+                    return new IdentToken(new String(buf, 0, a));
                 }
     
                 // Illegal character
