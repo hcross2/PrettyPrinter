@@ -19,8 +19,8 @@ namespace Parse
         
         private bool IndentifierCharacter(char ch) //we wrote a method to call instead of rewriting this each time
         {
-            return( ch >= 'A' && ch <= 'Z' 
-                    | ch >= 'a' && ch <= 'z''
+            return( (ch >= 'A' && ch <= 'Z') 
+                    | (ch >= 'a' && ch <= 'z')
                     | ch == '!' 
                     | ch == '$' 
                     | ch == '%' 
@@ -38,7 +38,8 @@ namespace Parse
                     | ch == '@' 
                     | ch == '^' 
                     | ch == '_' 
-                    | ch == '~') ;
+                    | ch == '~'
+                    | ch == 36) ;
         }
 
         public Scanner(TextReader i) { In = i; }
@@ -153,6 +154,8 @@ namespace Parse
                         i = 10*i + ch -'0';
                         peekch = In.Peek();
                     }
+                    if (peekch != 41 || peekch != 32)
+                        Console.WriteLine("Scanner Integer Error: RPAREN or blank space required after number.");
                     return new IntToken(i);
                 }
         
@@ -164,7 +167,7 @@ namespace Parse
                     int peekch = In.Peek();
                     if (peekch == -1) //assumes EOF is -1
                         return null;
-                    while(IndentifierCharacter((char)peekch) || peekch >= '0' && peekch <= '9')
+                    while(IndentifierCharacter((char)peekch) || (peekch >= '0' && peekch <= '9' || peekch == '!'))
                     {
                         ch = In.Read();
                         buf[a++] = (char)ch;
