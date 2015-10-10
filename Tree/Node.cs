@@ -85,6 +85,10 @@ namespace Tree
         {
             
         }
+        public string getName()
+        {
+            return null;
+        }
     }
 }
 
