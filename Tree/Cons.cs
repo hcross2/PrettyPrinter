@@ -29,7 +29,7 @@ namespace Tree
                 form = new Regular();
                 return;
             }
-            switch ((car as Indent).getName())
+            switch ((car as Ident).getName())
             {
                 case "begin": form = new Begin();
                     break;
