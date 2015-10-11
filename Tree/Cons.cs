@@ -26,6 +26,7 @@ namespace Tree
         {
             if (car.isSymbol()) // is this implemeneted yet?
             {
+                string name = (car as Ident).getName());
                 if (name == "quote" || name == "'")
                 {
                     
