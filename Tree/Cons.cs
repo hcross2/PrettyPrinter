@@ -24,10 +24,11 @@ namespace Tree
         // parsing up to the interpreter.
         void parseList()
         {
-            if (car.isSymbol()) // is this implemeneted yet?
+            if (!car.isSymbol()) // is this implemeneted yet?
             {
                 string name = car.getName(); //implement getname
                 if (name == "quote" || name == "'")
+                
                     form = new Quote();
                 else if (name == "lambda") //assumes strings can be compared this way
                     form = new Lambda();
@@ -43,9 +44,10 @@ namespace Tree
                     form = new Define();
                 else if (name == "set!")
                     form = new Set();
-                else    
-                    form = new Regular();
+                
             }
+            else    
+                    form = new Regular();
         }
  
         public override void print(int n)
