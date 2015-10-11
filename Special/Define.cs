@@ -20,6 +20,8 @@ namespace Tree
             Node identifier = t.getCdr().getCar();
             if (indentifier.isSymbol()) //WHAT IF THIS IS A LIST!?!?!?
                 identifier.print(n, p);
+            else
+                Console.WriteLine("DEFINE ERROR: DEFINE REQUIRES AN IDENTIFIER AFTER DEFINE");
             identifier = t.getCdr().getCdr();
             while (identifier.isPair())
             {
