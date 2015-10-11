@@ -68,7 +68,7 @@ namespace Tree
             return this.cdr;
         }
         
-        public bool isPair()
+        public override bool isPair() //should override Tree.Node isPair()
         {
             if (car != null & cdr != null )
                 return true;
