@@ -4,6 +4,8 @@ namespace Tree
 {
     public class Node
     {
+        private Node car;
+        private Node cdr;
         // The argument of print(int) is the number of characters to indent.
         // Every subclass of Node must implement print(int).
         public virtual void print(int n) 
@@ -71,19 +73,19 @@ namespace Tree
         // using parseList.
         public virtual Node getCar() //need param?
         { 
-            return car; 
+            return this.car; 
         }
         public virtual Node getCdr() //needs param?
         { 
-            return cdr; 
+            return this.cdr; 
         }
         public virtual void setCar(Node a) 
         { 
-            a = car;
+            a = this.car;
         }
         public virtual void setCdr(Node d) 
         {
-            d = cdr;
+            d = this.cdr;
         }
         public string getName()
         {
