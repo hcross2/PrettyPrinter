@@ -28,19 +28,19 @@ namespace Tree
             {
                 string name = car.getName(); //implement getname
                 if (name == "quote" || name == "'")
-                    form = new quote();
-                else if (name == "lamda") //assumes strings can be compared this way
-                    form = new lamda();
+                    form = new Quote();
+                else if (name == "lambda") //assumes strings can be compared this way
+                    form = new Lambda();
                 else if (name == "if")
                     form = new If();
                 else if (name == "begin")
-                    form = new begin();
+                    form = new Begin();
                 else if (name == "let")
                     form = new Let();
                 else if (name == "cond")
-                    form = new cond();
+                    form = new Cond();
                 else if (name == "define")
-                    form = new define();
+                    form = new Define();
                 else if (name == "set!")
                     form = new Set();
                 else    

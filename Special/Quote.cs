@@ -4,11 +4,12 @@ namespace Tree
 {
     public class Quote : Special
     {
-    private Cons list = null;
-	public Quote(Cons t) 
+    //private Cons list = null;
+    public Quote() {} //to fix empty constructor
+	/*public Quote(Cons t) 
     { 
         this.list = t;
-    }
+    } */
         public override void print(Node t, int n, bool p)
         {
             for (int i = 0; i < n; i++)
