@@ -10,7 +10,9 @@ namespace Tree
             if (!p)
             {
                 for (int i = 0; i < n; i++)
+                {
                     Console.Write(' ');
+                }
                 Console.Write("(");
                 p = true;
             }
@@ -45,6 +47,7 @@ namespace Tree
                 {
                     t.cdr.print(1, true);
                 }
+            }
             else //shits broke
                 Console.WriteLine("DEFINE ERROR: INCORRECT SYNTAX FOR IDENTIFIER");
             Console.Write(")");
