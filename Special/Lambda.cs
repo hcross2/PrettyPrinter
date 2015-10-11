@@ -16,12 +16,15 @@ namespace Tree
             }
             Console.Write("lambda");
             
-            if (); //shits ok
+            if (t.cdr.isPair() & t.cdr.cdr.isPair() & !t.cdr.cdr.cdr.isPair()); //shits ok
             { 
-               
+                t.cdr.car.print(1);
+                Console.WriteLine();
+                t.cdr.cdr.car.print(n + 4, p);
+                Console.WriteLine();
             }
             else //shits broke
-                Console.WriteLine("IF ERROR: INCORRECT SYNTAX");
+                Console.WriteLine("LAMBDA ERROR: INCORRECT SYNTAX");
             Console.Write(")");
   	    }
     }
