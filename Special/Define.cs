@@ -17,17 +17,26 @@ namespace Tree
             Console.Write("define");
             n = 1; 
             
-            Node identifier = t.getCdr().getCar();
-            if (indentifier.isSymbol()) //WHAT IF THIS IS A LIST!?!?!?
-                identifier.print(n, p);
-            else
-                Console.WriteLine("DEFINE ERROR: DEFINE REQUIRES AN IDENTIFIER AFTER DEFINE");
-            identifier = t.getCdr().getCdr();
-            while (identifier.isPair())
+            if (t.cdr.isPair() & !t.cdr.car.isPair()); //shits ok
             {
-                identifier.car.print(1, p); //assumes print recursively prints items (including RPAREN)
-                identifier = identifier.getCdr();
+                Node identifier = t.getCdr().getCar();
+                if (indentifier.isSymbol()) //WHAT IF THIS IS A LIST!?!?!?
+                    identifier.print(n, p);
+                else
+                    Console.WriteLine("DEFINE ERROR: DEFINE REQUIRES AN IDENTIFIER AFTER DEFINE");
+                identifier = t.getCdr().getCdr();
+                while (identifier.isPair())
+                {
+                    identifier.car.print(1, p); //assumes print recursively prints items (including RPAREN)
+                    identifier = identifier.getCdr();
+                }
             }
+            else if (t.cdr.isPair()) //shits weird
+            {
+                
+            }
+            else //shits broke
+                Console.WriteLine("DEFINE ERROR: INCORRECT SYNTAX FOR IDENTIFIER");
             Console.Write(")");
         }
     }
