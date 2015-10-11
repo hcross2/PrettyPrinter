@@ -21,7 +21,7 @@ namespace Tree
 
             Console.WriteLine(name);
         }
-        public override string getName()
+        public string getName()
         {
             return name;
         }

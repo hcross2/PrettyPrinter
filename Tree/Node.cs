@@ -87,10 +87,6 @@ namespace Tree
         {
             d = this.cdr;
         }
-        public string getName()
-        {
-            return null;
-        }
     }
 }
 
