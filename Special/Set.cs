@@ -16,7 +16,8 @@ namespace Tree
         }
             Console.Write("set!");
             n = 1; //1 space between parts and whatnot
-            if (indentifier.isSymbol()) //WHAT IF THIS IS A LIST!?!?!?
+            Node identifier = t.getCdr();
+            if (identifier.isSymbol()) //WHAT IF THIS IS A LIST!?!?!?
                 identifier.print(n, p);
             else
                 Console.WriteLine("SET ERROR: SET! REQUIRES AN IDENTIFIER AFTER DEFINE");
