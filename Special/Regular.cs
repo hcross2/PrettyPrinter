@@ -17,7 +17,7 @@ namespace Tree
                 Console.Write("(");
                 p = true;
             }
-            if (cons.getCar().isCons() | cons.getCar().isNull()) //is isCons ok?
+            if (cons.getCar().isPair() | cons.getCar().isNull()) //is isCons ok?
                 cons.getCar().print(n, false);
             else
                 cons.getCar().print(n, true);
@@ -33,12 +33,12 @@ namespace Tree
             /*public void printQuote(Node t, int n, bool p) //override?
             {
                 print(t, n, p);
-            }*/
+            }
             
             public Cons isCons()
             {
                 return cons;
-            }
+            } */
         }
     }
 }
