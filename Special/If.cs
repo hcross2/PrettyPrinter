@@ -17,19 +17,13 @@ namespace Tree
             Console.Write("if");
             
             if (t.cdr.isPair() & t.cdr.cdr.isPair() & t.cdr.cdr.cdr.isPair() & !t.cdr.cdr.cdr.cdr.isPair()); //shits ok
-            {
-                n = 1;
-                Node identifier = t.getCdr().getCar();
-                if (indentifier.isSymbol()) //WHAT IF THIS IS A LIST!?!?!?
-                    identifier.print(n, p);
-                else
-                    Console.WriteLine("IF ERROR: DEFINE REQUIRES AN IDENTIFIER AFTER DEFINE");
-                identifier = t.getCdr().getCdr();
-                while (identifier.isPair())
-                {
-                    identifier.car.print(1, p); //assumes print recursively prints items (including RPAREN)
-                    identifier = identifier.getCdr();
-                }
+            { //assumes a lot of cases dont happen like (if #t.............
+                t.cdr.print(1, false);
+                n = n + 4;
+                Console.WriteLine();
+                t.cdr.cdr.car.print(n, p);
+                Console.WriteLine();
+                t.cdr.cdr.cdr.car.print(n);
             }
             else //shits broke
                 Console.WriteLine("IF ERROR: INCORRECT SYNTAX");
