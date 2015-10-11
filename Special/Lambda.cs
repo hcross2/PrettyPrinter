@@ -16,11 +16,11 @@ namespace Tree
             }
             Console.Write("lambda");
             
-            if (t.cdr.isPair() & t.cdr.cdr.isPair() & !t.cdr.cdr.cdr.isPair()) //shits ok
+            if (t.getCdr().isPair() & t.getCdr().getCdr().isPair() & !t.getCdr().getCdr().getCdr().isPair()) //shits ok
             { 
-                t.cdr.car.print(1);
+                t.getCdr().getCar().print(1);
                 Console.WriteLine();
-                t.cdr.cdr.car.print(n + 4, p);
+                t.getCdr().getCdr().getCar().print(n + 4, p);
                 Console.WriteLine();
             }
             else //shits broke
