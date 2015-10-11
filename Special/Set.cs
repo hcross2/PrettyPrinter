@@ -11,8 +11,9 @@ namespace Tree
         {
             for (int i = 0; i < n; i++)
 			    Console.Write(' ');
-            p = true;
+            
             Console.Write("(");
+            p = true;
         }
             Console.Write("set!");
             n = 1; //1 space between parts and whatnot

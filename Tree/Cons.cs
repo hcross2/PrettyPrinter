@@ -24,51 +24,31 @@ namespace Tree
         // parsing up to the interpreter.
         void parseList()
         {
-            if (car.isSymbol()) // is this implemeneted yet?
-            {
-                string name = ((car as Ident).getName());
-                if (name == "quote" || name == "'")
-                {
-                    
-                    form = new Quote();
-                }
-                else if (name == "lambda") //assumes strings can be compared this way
-                {
-                    form = new Lambda();
-                }
-                else if (name == "if")
-                {
-                    form = new If();
-                }
-                else if (name == "begin")
-                {
-                    form = new Begin();
-                }
-                else if (name == "let")
-                {
-                    form = new Let();
-                }
-                else if (name == "cond")
-                {
-                    form = new Cond();
-                }
-                else if (name == "define")
-                {
-                    form = new Define();
-                }
-                else if (name == "set!")
-                {
-                    form = new Set();
-                }
-                else
-                {
-                    form = new Regular();
-                }
-            }
-            else
+            if(!car.isSymbol())
             {
                 form = new Regular();
                 return;
+            }
+            switch ((car as Indent).getName())
+            {
+                case "begin": form = new Begin();
+                    break;
+                case "cond": form = new Cond();
+                    break;
+                case "define": form = new Define();
+                    break;
+                case "if": form = new If();
+                    break;
+                case "lambda": form = new Lambda();
+                    break;
+                case "let": form = new Let();
+                    break;
+                case "quote": form = new Quote();
+                    break;
+                case "set": form = new Set();
+                    break;                
+                default: form = new Regular();
+                    break;
             }
         }
  
@@ -98,6 +78,15 @@ namespace Tree
                 return true;
             else    
                 return false;
+        }
+        public override void setCar(Noda a)
+        {
+            car = a;
+            parseList();
+        }
+        public override void setCdr(Node d)
+        {
+            cdr = d;
         }
         
         //setCar?

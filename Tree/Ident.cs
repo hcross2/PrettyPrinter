@@ -21,6 +21,14 @@ namespace Tree
 
             Console.WriteLine(name);
         }
+        public string getName()
+        {
+            return name;
+        }
+        public boolean isSymbol()
+        {
+            return true;
+        }
     }
 }
 
