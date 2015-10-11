@@ -18,14 +18,14 @@ namespace Tree
             }
             Console.Write("if");
             
-            if (t.cdr.isPair() & t.cdr.cdr.isPair() & t.cdr.cdr.cdr.isPair() & !t.cdr.cdr.cdr.cdr.isPair()) //shits ok
+            if (t.getCdr().isPair() & t.getCdr().getCdr().isPair() & t.getCdr().getCdr().getCdr().isPair() & !t.getCdr().getCdr().getCdr().getCdr().isPair()) //shits ok
             { //assumes a lot of cases dont happen like (if #t.............
-                t.cdr.print(1, false);
+                t.getCdr().print(1, false);
                 n = n + 4;
                 Console.WriteLine();
-                t.cdr.cdr.car.print(n, p);
+                t.getCdr().getCdr().getCar().print(n, p);
                 Console.WriteLine();
-                t.cdr.cdr.cdr.car.print(n);
+                t.getCdr().getCdr().getCdr().getCar().print(n);
             }
             else //shits broke
                 Console.WriteLine("IF ERROR: INCORRECT SYNTAX");
