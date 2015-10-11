@@ -79,7 +79,7 @@ namespace Tree
             else    
                 return false;
         }
-        public override void setCar(Noda a)
+        public override void setCar(Node a)
         {
             car = a;
             parseList();
