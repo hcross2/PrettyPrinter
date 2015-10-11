@@ -25,7 +25,7 @@ namespace Tree
         {
             return name;
         }
-        public bool isSymbol()
+        public override bool isSymbol()
         {
             return true;
         }
