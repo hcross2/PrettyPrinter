@@ -68,7 +68,7 @@ namespace Tree
             return this.cdr;
         }
         
-        public boolean isPair();
+        public boolean isPair()
         {
             if (car != null & cdr != null )
                 return true;

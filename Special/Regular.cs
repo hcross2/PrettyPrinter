@@ -9,13 +9,15 @@ namespace Tree
         public override void print(Node t, int n, bool p)
         {
             for (int i = 0; i < n; i++)
+            {
                 Console.Write(' ');
+            }
             if (!p)
             {
                 Console.Write("(");
                 p = true;
             }
-            if (cons.getCar().isCons() | cons.getCar().isNil()) //is isCons ok?
+            if (cons.getCar().isCons() | cons.getCar().isNull()) //is isCons ok?
                 cons.getCar().print(n, false);
             else
                 cons.getCar().print(n, true);
@@ -28,7 +30,7 @@ namespace Tree
             else
                 Console.Write(")");		
                 
-            public void printQuote(Node t, int n, bool p)
+            public void printQuote(Node t, int n, bool p) //override?
             {
                 print(t, n, p);
             }

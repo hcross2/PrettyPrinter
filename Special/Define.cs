@@ -1,5 +1,6 @@
 //Hunter Crossett and Emmitt Bush
-using Console.Writee Tree
+using System;
+namespace Tree
 {
     public class Define : Special
     {
@@ -15,7 +16,7 @@ using Console.Writee Tree
             }
             Console.Write("define");
             
-            if (t.cdr.isPair() & !t.cdr.car.isPair()); //shits ok
+            if (t.cdr.isPair() & !t.cdr.car.isPair()) //shits ok
             {
                 n = 1;
                 Node identifier = t.getCdr().getCar();

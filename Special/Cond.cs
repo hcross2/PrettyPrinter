@@ -18,10 +18,10 @@ namespace Tree
             if (t.getCdr().isPair())            //probably should throw an error if it isnt.
                 t.getCdr().print(n + 4, true); 
             for (int i = 0; i < n; i++) 
-            Console.Write(' ');
+                Console.Write(' ');
             Console.Write(")");
             
-            void printQuote(Node t, int n bool p)
+            void printQuote(Node t, int n, bool p)
             {
                 print(t, n, p);
             }

@@ -16,7 +16,7 @@ namespace Tree
                 Console.Write(" ");
             }
                 Console.Write("'");
-                if (t.getCdr() is Nil()) // should check if it is a nil node
+                if (t.getCdr().isNull()) // should check if it is a nil node
                 {
                     Console.Write(" ");
                 }
