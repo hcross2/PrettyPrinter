@@ -6,7 +6,16 @@ namespace Tree
     {
 	public Set() { }
         public override void print(Node t, int n, bool p)
+        {  
+            if (!p)
         {
+            for (int i = 0; i < n; i++)
+			    Console.Write(' ');
+            p = true;
+        }
+            Console.Write("set!");
+            n = 1; //1 space between parts and whatnot
+            t.getCdr().print(n, p);
         }
     }
 }

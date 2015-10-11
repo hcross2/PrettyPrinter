@@ -7,6 +7,7 @@ namespace Tree
 	public Define() { }
         public override void print(Node t, int n, bool p)
         {
+            
         }
     }
 }
