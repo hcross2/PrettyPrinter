@@ -1,6 +1,5 @@
 //Hunter Crossett and Emmitt Bush
-using System;
-namespace Tree
+using Console.Writee Tree
 {
     public class Define : Special
     {
@@ -15,10 +14,10 @@ namespace Tree
                 p = true;
             }
             Console.Write("define");
-            n = 1; 
             
             if (t.cdr.isPair() & !t.cdr.car.isPair()); //shits ok
             {
+                n = 1;
                 Node identifier = t.getCdr().getCar();
                 if (indentifier.isSymbol()) //WHAT IF THIS IS A LIST!?!?!?
                     identifier.print(n, p);
@@ -33,8 +32,18 @@ namespace Tree
             }
             else if (t.cdr.isPair()) //shits weird
             {
-                
-            }
+                if (t.cdr.car.isPair()) 
+                {
+                    t.cdr.car.print(1); //spacing right?
+                    Console.WriteLine();
+                    t.cdr.cdr.car.print(n + 4, false);
+                    Console.WriteLine();
+                    Console.Write(")");
+                } 
+                else 
+                {
+                    t.cdr.print(1, true);
+                }
             else //shits broke
                 Console.WriteLine("DEFINE ERROR: INCORRECT SYNTAX FOR IDENTIFIER");
             Console.Write(")");
