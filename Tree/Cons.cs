@@ -6,7 +6,7 @@ namespace Tree
     {
         private Node car;
         private Node cdr;
-        private Special form;
+        private Special form; //difference?
         public Cons(Node a, Node d)
         {
             car = a;
@@ -24,30 +24,51 @@ namespace Tree
         // parsing up to the interpreter.
         void parseList()
         {
-            if (!car.isSymbol()) // is this implemeneted yet?
+            if (car.isSymbol()) // is this implemeneted yet?
             {
-                string name = car.getName(); //implement getname
                 if (name == "quote" || name == "'")
-                
+                {
+                    
                     form = new Quote();
+                }
                 else if (name == "lambda") //assumes strings can be compared this way
+                {
                     form = new Lambda();
+                }
                 else if (name == "if")
+                {
                     form = new If();
+                }
                 else if (name == "begin")
+                {
                     form = new Begin();
+                }
                 else if (name == "let")
+                {
                     form = new Let();
+                }
                 else if (name == "cond")
+                {
                     form = new Cond();
+                }
                 else if (name == "define")
+                {
                     form = new Define();
+                }
                 else if (name == "set!")
+                {
                     form = new Set();
-                
-            }
-            else    
+                }
+                else
+                {
                     form = new Regular();
+                }
+            }
+            else
+            {
+                form = new Regular();
+                return;
+            }
         }
  
         public override void print(int n)
@@ -77,5 +98,8 @@ namespace Tree
             else    
                 return false;
         }
+        
+        //setCar?
+        //setCdr?
     }
 }

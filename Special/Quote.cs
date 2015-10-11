@@ -16,9 +16,10 @@ namespace Tree
             {
                 Console.Write(" ");
             }
-                Console.Write("'");
+                Console.Write("'"); //loop statement below?
                 if (t.getCdr().isNull()) // should check if it is a nil node
                 {
+                    
                     Console.Write(" ");
                 }
                 else
