@@ -30,10 +30,10 @@ namespace Tree
             else
                 Console.Write(")");		
                 
-            public void printQuote(Node t, int n, bool p) //override?
+            /*public void printQuote(Node t, int n, bool p) //override?
             {
                 print(t, n, p);
-            }
+            }*/
             
             public Cons isCons()
             {

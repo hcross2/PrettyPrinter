@@ -21,10 +21,10 @@ namespace Tree
                 Console.Write(' ');
             Console.Write(")");
             
-            void printQuote(Node t, int n, bool p)
+            /*void printQuote(Node t, int n, bool p)
             {
                 print(t, n, p);
-            }
+            }*/
         }
     }
 }
