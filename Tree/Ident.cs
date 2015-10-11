@@ -1,5 +1,5 @@
 // Ident -- Parse tree node class for representing identifiers
-
+// Hunter Crossett and Emmitt Bush CSC 4101
 using System;
 
 namespace Tree

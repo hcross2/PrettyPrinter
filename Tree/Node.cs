@@ -1,5 +1,5 @@
 // Node -- Base class for parse tree node objects
-
+// Hunter Crossett and Emmitt Bush CSC 4101
 namespace Tree
 {
     public class Node

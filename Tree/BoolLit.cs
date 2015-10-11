@@ -1,5 +1,5 @@
 // BoolLit -- Parse tree node class for representing boolean literals
-
+// Hunter Crossett and Emmitt Bush CSC 4101
 using System;
 
 namespace Tree

@@ -1,5 +1,5 @@
 // Token -- Base class Token objects
-
+// Hunter Crossett and Emmitt Bush CSC 4101
 namespace Tokens
 {
     public class Token

@@ -1,5 +1,5 @@
 // Nil -- Parse tree node class for representing the empty list
-
+// Hunter Crossett and Emmitt Bush CSC 4101
 using System;
 
 namespace Tree

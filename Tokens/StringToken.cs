@@ -1,5 +1,5 @@
 // StringToken -- Token object for representing string constants.
-
+// Hunter Crossett and Emmitt Bush CSC 4101
 namespace Tokens
 {
     public class StringToken : Token

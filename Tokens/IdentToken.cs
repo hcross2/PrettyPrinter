@@ -1,5 +1,5 @@
 // IdentToken -- Token object for representing identifiers.
-
+// Hunter Crossett and Emmitt Bush CSC 4101
 namespace Tokens
 {
     public class IdentToken : Token
