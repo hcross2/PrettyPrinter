@@ -17,7 +17,16 @@ namespace Tree
             Console.Write("define");
             n = 1; 
             
-            t.cdr.print(n, p);
+            Node identifier = t.getCdr().getCar();
+            if (indentifier.isSymbol()) //WHAT IF THIS IS A LIST!?!?!?
+                identifier.print(n, p);
+            identifier = t.getCdr().getCdr();
+            while (identifier.isPair())
+            {
+                identifier.car.print(1, p); //assumes print recursively prints items (including RPAREN)
+                identifier = identifier.getCdr();
+            }
+            Console.Write(")");
         }
     }
 }
