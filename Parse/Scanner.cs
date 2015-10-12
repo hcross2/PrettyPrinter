@@ -11,11 +11,27 @@ namespace Parse
     public class Scanner
     {
         private TextReader In;
+        private Token peekToken;
+        private bool tokenRead;
 
         // maximum length of strings and identifier
         private const int BUFSIZE = 1000;
         
         private char[] buf = new char[BUFSIZE];
+        
+        public Token peekToken()
+        {
+            tokenRead = false;
+            peekToken = getNextToken();
+            return peekToken;
+        }
+        
+        public returnToken()
+        {
+            tokenRead = true;
+        }
+        
+        public 
         
         private bool IndentifierCharacter(char ch) //we wrote a method to call instead of rewriting this each time
         {
@@ -50,6 +66,11 @@ namespace Parse
 
         public Token getNextToken() 
         {
+            if (tokenRead)
+            {
+                tokenRead = false;
+                return peekToken;
+            }
             int ch; //current character we are working on
 
             try

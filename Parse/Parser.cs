@@ -71,7 +71,7 @@ namespace Parse
         protected Node parseRest()
         {
             Token t = scanner.getNextToken(); //error thrown correctly with null token
-            if(t == null)
+            if(t == null )
             {
                 Console.WriteLine("ParseRest errror: EOF in List ");
                 return new Nil();
@@ -96,13 +96,8 @@ namespace Parse
         }
         protected Node parseR()
         {
-            Token t = scanner.getNextToken();
-            if (t == null)
-            {
-                Console.WriteLine("ParseR errror: EOF in List ");
-                return new Nil();                       
-            }
-            else if(t.getType() == TokenType.DOT)
+            Token t = scanner.peekToken();
+            if(t.getType() == TokenType.DOT)
             {
                 Node temp = parseExp(); //not perfect
                 t = scanner.getNextToken();
@@ -112,11 +107,7 @@ namespace Parse
                 }
                 return temp;
             }
-            else if(t.getType() == TokenType.RPAREN)
-            {
-                return new Nil(); //this should solve our issues
-            }
-            else
+            scanner.returnPeek(); //returns t
                 return parseRest();
         }
     }
