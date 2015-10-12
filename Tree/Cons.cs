@@ -52,6 +52,11 @@ namespace Tree
                     break;
             }
         }
+        
+        public form getForm()
+        {
+            return this.form;
+        }
  
         public override void print(int n)
         {
