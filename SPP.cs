@@ -52,8 +52,6 @@ public class SPP
         root = parser.parseExp();
         while (root != null) 
         {
-            Console.WriteLine(root.getType());
-            Console.WriteLine(root.getForm());
             root.print(0); //should we put a new line here?
             root = parser.parseExp();
         }
