@@ -8,6 +8,7 @@ namespace Tree
         public Regular() { }
         public override void print(Node t, int n, bool p)
         {
+            Console.WriteLine("Shit does print!");
             for (int i = 0; i < n; i++)
             {
                 Console.Write(' ');
