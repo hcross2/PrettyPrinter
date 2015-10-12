@@ -154,7 +154,7 @@ namespace Parse
                         i = 10*i + ch -'0';
                         peekch = In.Peek();
                     }
-                    if (peekch != 41 || peekch != 32 || (peekch >= 9 && peekch <= 13 ) || peekch!= ')')
+                    if (peekch != ')' & peekch != 41 & peekch != 32 & !(peekch >= 9 && peekch <= 13 ))
                         Console.WriteLine("Scanner Integer Error: RPAREN or blank space required after number.");
                     return new IntToken(i);
                 }
