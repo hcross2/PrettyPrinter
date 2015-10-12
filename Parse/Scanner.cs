@@ -11,7 +11,7 @@ namespace Parse
     public class Scanner
     {
         private TextReader In;
-        private Token peekToken;
+        private Token tokenUnread;
         private bool tokenRead;
 
         // maximum length of strings and identifier
@@ -22,16 +22,14 @@ namespace Parse
         public Token peekToken()
         {
             tokenRead = false;
-            peekToken = getNextToken();
-            return peekToken;
+            tokenUnread = getNextToken();
+            return tokenUnread;
         }
         
-        public returnToken()
+        public void returnToken()
         {
             tokenRead = true;
         }
-        
-        public 
         
         private bool IndentifierCharacter(char ch) //we wrote a method to call instead of rewriting this each time
         {
@@ -69,7 +67,7 @@ namespace Parse
             if (tokenRead)
             {
                 tokenRead = false;
-                return peekToken;
+                return tokenUnread;
             }
             int ch; //current character we are working on
 

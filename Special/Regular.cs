@@ -8,14 +8,13 @@ namespace Tree
         public Regular() { }
         public override void print(Node t, int n, bool p)
         {
-            Console.WriteLine("Shit does print!");
             for (int i = 0; i < n; i++)
             {
                 Console.Write(' ');
             }
             if (!p)
             {
-                Console.Write("(");
+                Console.Write("(xxx");
                 p = true;
             }
             if (t.getCar().isPair() | t.getCar().isNull())
@@ -37,7 +36,7 @@ namespace Tree
                 t.getCdr().print(n, true);
             }
             else
-                Console.Write(")");		
+                Console.Write("zzz)");		
 
         }
     }
