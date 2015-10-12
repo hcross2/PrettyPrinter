@@ -78,6 +78,7 @@ namespace Parse
             }
             else if(t.getType() == TokenType.RPAREN)
             {
+                Console.WriteLine("We are on the RPAREN");
                 return new Nil();
             } 
             else if(t.getType() == TokenType.DOT)
