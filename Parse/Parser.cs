@@ -22,7 +22,7 @@ namespace Parse
         {
             if(t == null)
             {
-                return new Nil();
+                return null;
             }
             else if(t.getType() == TokenType.LPAREN)
             {
@@ -74,12 +74,11 @@ namespace Parse
             if(t == null )
             {
                 Console.WriteLine("ParseRest errror: EOF in List ");
-                return new Nil();
+                return new Nil(); //NIL
             }
             else if(t.getType() == TokenType.RPAREN)
             {
-                Console.WriteLine("We are on the RPAREN");
-                return new Nil();
+                return new Nil(); //NIL
             } 
             else if(t.getType() == TokenType.DOT)
             {
@@ -107,8 +106,8 @@ namespace Parse
                 }
                 return temp;
             }
-            scanner.returnPeek(); //returns t
-                return parseRest();
+            scanner.returnToken(); //returns t
+            return parseRest();
         }
     }
 }
