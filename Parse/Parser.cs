@@ -112,10 +112,12 @@ namespace Parse
                 }
                 return temp;
             }
-            else
+            else if(t.getType() == TokenType.RPAREN)
             {
-                return parseRest();
+                return new Nil();
             }
+            else
+                return parseRest();
         }
     }
 }
