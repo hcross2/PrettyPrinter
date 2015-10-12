@@ -12,7 +12,6 @@ namespace Tree
         {
             car = a;
             cdr = d;
-            Console.WriteLine("boogers");
             parseList();
         }
     
