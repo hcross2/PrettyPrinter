@@ -60,6 +60,7 @@ namespace Parse
             {
                 Console.WriteLine("PraseExp error: Failed to parse");
             }
+            Console.WriteLine("THIS IS WHERE NULL IS BEING PASSED IN: scanner parseexp");
             return null;
         }
  
@@ -89,6 +90,7 @@ namespace Parse
                 Node d=parseR();
                 return new Cons(a,d);
             }
+            Console.WriteLine("THIS IS WHERE NULL IS BEING PASSED IN scanner parserest");
             return null;
         }
         protected Node parseR()

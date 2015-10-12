@@ -8,12 +8,6 @@ namespace Tree
         public Regular() { }
         public override void print(Node t, int n, bool p)
         {
-            if (t == null)
-                Console.Write("Node is null");
-            if (n == null)
-                Console.Write("int is null");
-            if (p == null)
-                Console.Write("bool is null");
             Console.WriteLine("Shit does print!");
             for (int i = 0; i < n; i++)
             {
