@@ -114,7 +114,7 @@ namespace Parse
             }
             else if(t.getType() == TokenType.RPAREN)
             {
-                return new Nil();
+                return new Nil(); //this should solve our issues
             }
             else
                 return parseRest();
