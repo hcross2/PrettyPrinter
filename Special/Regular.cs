@@ -14,7 +14,7 @@ namespace Tree
             }
             if (!p)
             {
-                Console.Write("(xxx");
+                Console.Write("(");
                 p = true;
             }
             if (t.getCar().isPair() | t.getCar().isNull())
