@@ -4,7 +4,7 @@ namespace Tree
 {
     public class Regular : Special
     {
-        private Cons cons;
+//        private Cons cons;
         public Regular() { }
         public override void print(Node t, int n, bool p)
         {
@@ -18,28 +18,27 @@ namespace Tree
                 Console.Write("(");
                 p = true;
             }
-            if (cons.getCar().isPair() | cons.getCar().isNull()) //is isCons ok?
-                cons.getCar().print(n, false);
+            if (t.getCar().isPair() | t.getCar().isNull())
+            { 
+                t.getCar().print(n, false);
+            }
             else
-                cons.getCar().print(n, true);
+            {
+                t.getCar().print(n, true);
+            }
     	
-            if (cons.getCdr() != null)
+            if (t.getCdr() != null)
+            {
                 Console.Write(" ");
+            }
     	
-            if (cons.getCdr() != null)
-                cons.getCdr().print(n, true);
+            if (t.getCdr() != null)
+            {
+                t.getCdr().print(n, true);
+            }
             else
                 Console.Write(")");		
-                
-            /*public void printQuote(Node t, int n, bool p) //override?
-            {
-                print(t, n, p);
-            }
-            
-            public Cons isCons()
-            {
-                return cons;
-            } */
+
         }
     }
 }
