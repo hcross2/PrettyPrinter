@@ -15,11 +15,20 @@ namespace Tree
                 p = true;
             }
             Console.WriteLine("begin"); //print out keywords
-            if (t.getCdr().isPair())            //probably should throw an error if it isnt.
-                t.getCdr().print(n + 4, true); 
+            Node u = t.getCdr();
+            while (u.isPair())  
+            {    
+                Console.WriteLine();
+                for (int i = 0; i < n; i++) 
+                    Console.Write(' ');     
+                u.print(n + 4, true); 
+                u = u.getCdr();
+            }
             for (int i = 0; i < n; i++) 
-            Console.Write(' ');
+                Console.Write(' ');
+            Console.WriteLine();
             Console.Write(")");
+            Console.WriteLine();
         }
     }
 }
